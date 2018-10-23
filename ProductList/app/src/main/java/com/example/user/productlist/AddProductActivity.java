@@ -17,6 +17,7 @@ import com.google.firebase.FirebaseApp;
 import com.example.user.helper.ProductListManager;
 import com.example.user.helper.listener.OnAddProductListener;
 import com.example.user.productlist.R;
+import com.google.firebase.auth.FirebaseUser;
 
 public class AddProductActivity extends AppCompatActivity {
 
@@ -32,11 +33,14 @@ public class AddProductActivity extends AppCompatActivity {
     private EditText etProductExplanation;
     private ImageView ivProduct;
     private Button btnUpload;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+
+        FirebaseUser user= (FirebaseUser)getIntent().getSerializableExtra("user");
 
         // Connect variables to UI resources
         etProductName = findViewById(R.id.etProductName);
@@ -72,11 +76,14 @@ public class AddProductActivity extends AppCompatActivity {
     public void uploadProduct(View v) {
 
         btnUpload.setEnabled(false);
+        Toast.makeText(AddProductActivity.this, "button push", Toast.LENGTH_SHORT).show();
+
 
         productListManager.addProduct(
                 etProductName.getText().toString(),
                 etProductExplanation.getText().toString(),
                 this.selectedImageUri,
+                user,
                 new OnAddProductListener() {
                     @Override
                     public void onUpload() {

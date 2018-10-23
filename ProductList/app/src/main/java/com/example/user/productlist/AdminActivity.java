@@ -18,6 +18,7 @@ public class AdminActivity extends AppCompatActivity {
 
     public void showAddProduct(View v) {
         Intent newActivity = new Intent(this, AddProductActivity.class);
+        newActivity.putExtra("user", getIntent().getSerializableExtra("user"));
         startActivity(newActivity);
     }
 

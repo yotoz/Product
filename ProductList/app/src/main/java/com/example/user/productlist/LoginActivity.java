@@ -78,6 +78,10 @@ public class LoginActivity extends AppCompatActivity {
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
+        try
+        {
+            signOut();
+        } catch(Exception e) {}
         // [END initialize_auth]
     }
 
@@ -123,9 +127,16 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, user.getDisplayName() + "login!", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                            intent.putExtra("user",user);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
+                            Toast.makeText(LoginActivity.this, "Login Data Incorrect!", Toast.LENGTH_LONG).show();
+                            try {
+                                signOut();
+                            }catch(Exception e) {}
                         }
                     }
                 });
@@ -162,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                 new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+
                     }
                 });
     }

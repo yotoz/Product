@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +35,7 @@ public class ProductListManager {
         storage = FirebaseStorage.getInstance();
     }
 
-    public void addProduct(final String name, final String explanation, final Uri image, final OnAddProductListener onAddProductListener) {
+    public void addProduct(final String name, final String explanation, final Uri image, final FirebaseUser user, final OnAddProductListener onAddProductListener) {
         DatabaseReference ref = database.getReference()
                 .child(PRODUCT_COLLECTION_NAME)
                 .child(name);
