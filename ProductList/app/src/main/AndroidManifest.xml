@@ -23,6 +23,10 @@
         <activity
             android:name=".AddProductActivity"
             android:label="@string/title_activity_add_product"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_activity_user"
             android:theme="@style/AppTheme"></activity>
     </application>
 

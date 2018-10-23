@@ -128,9 +128,32 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
-                            intent.putExtra("user",user);
-                            startActivity(intent);
+                            productListManager.checkUser(user.getUid(), new OnCheckUserListener() {
+                                @Override
+                                public void onSucceed(User user) {
+                                    // check the password
+                                    if (user.getUid().equals(mAuth.getCurrentUser().getUid())) {
+                                        Intent newActivity = null;
+
+                                        Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                                        intent.putExtra("user",mAuth.getCurrentUser());
+                                        startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                                        intent.putExtra("user",mAuth.getCurrentUser());
+                                        startActivity(intent);
+                                    }
+
+                                    btnLogin.setEnabled(true);
+                                }
+
+                                @Override
+                                public void onFailed() {
+
+
+                                    btnLogin.setEnabled(true);
+                                }
+                            });
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Login Data Incorrect!", Toast.LENGTH_LONG).show();

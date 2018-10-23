@@ -82,16 +82,14 @@ public class ProductListManager {
 
     /**
      * Method that check to exist a user.
-     * @param id user id
-     * @param pwd user password
+     * @param uid user uid
      * @param onCheckUserListener callback method
      */
-    public void checkUser(final String id, final String pwd, final OnCheckUserListener onCheckUserListener) {
+    public void checkUser(final String uid, final OnCheckUserListener onCheckUserListener) {
         // Set the path
-        Log.d("checkUser", "ID/PW:" + id + "/" + pwd);
         DatabaseReference ref = database.getReference()
                 .child(USER_COLLECTION_NAME)
-                .child(id);
+                .child("admin");
 
         // Call a listener after checking
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -99,7 +97,6 @@ public class ProductListManager {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     User user = dataSnapshot.getValue(User.class);
-                    user.setId(id);
                     onCheckUserListener.onSucceed(user);
                 } else {
                     onCheckUserListener.onFailed();

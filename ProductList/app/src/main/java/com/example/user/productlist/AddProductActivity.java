@@ -40,7 +40,7 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        FirebaseUser user= (FirebaseUser)getIntent().getSerializableExtra("user");
+        user= (FirebaseUser)getIntent().getSerializableExtra("user");
 
         // Connect variables to UI resources
         etProductName = findViewById(R.id.etProductName);
@@ -77,6 +77,8 @@ public class AddProductActivity extends AppCompatActivity {
 
         btnUpload.setEnabled(false);
         Toast.makeText(AddProductActivity.this, "button push", Toast.LENGTH_SHORT).show();
+
+
 
 
         productListManager.addProduct(

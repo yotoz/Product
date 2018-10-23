@@ -31,7 +31,7 @@
             android:background="@android:color/background_light"
             android:gravity="center"
             android:onClick="showAddProduct"
-            android:text="Add a product"
+            android:text="Product List"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -43,7 +43,7 @@
             app:layout_constraintVertical_bias="0.144" />
 
         <Button
-            android:id="@+id/btnList"
+            android:id="@+id/btnMyList"
             android:layout_width="207dp"
             android:layout_height="96dp"
             android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
             android:background="@android:color/background_light"
             android:gravity="center"
             android:onClick="showProductList"
-            android:text="Product List"
+            android:text="My List"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -73,7 +73,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="Admin"
+            android:text="User"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="18sp"
