@@ -88,8 +88,7 @@ public class ProductListManager {
     public void checkUser(final String uid, final OnCheckUserListener onCheckUserListener) {
         // Set the path
         DatabaseReference ref = database.getReference()
-                .child(USER_COLLECTION_NAME)
-                .child("admin");
+                .child(USER_COLLECTION_NAME);
 
         // Call a listener after checking
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

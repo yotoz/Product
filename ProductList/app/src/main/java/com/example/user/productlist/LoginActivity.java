@@ -132,9 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onSucceed(User user) {
                                     // check the password
-                                    if (user.getUid().equals(mAuth.getCurrentUser().getUid())) {
-                                        Intent newActivity = null;
-
+                                    if (user.getAdmin().equals(mAuth.getCurrentUser().getUid())) {
                                         Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                                         intent.putExtra("user",mAuth.getCurrentUser());
                                         startActivity(intent);

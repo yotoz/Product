@@ -7,13 +7,13 @@ public class User {
     public final static String ADMIN_TYPE = "admin";
     public final static String USER_TYPE = "user";
 
-    private String uid;
+    private String admin;
 
-    public String getUid() {
-        return uid;
+    public String getAdmin() {
+        return admin;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 }
